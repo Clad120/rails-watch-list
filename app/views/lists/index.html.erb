@@ -1,0 +1,16 @@
+<h1>Lists</h1>
+<div class="container">
+  <div class="cards">
+   <% @lists.each do |list| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+         <%= link_to list.name, list_path(list) %>
+      </div>
+          <% end %>
+    </div>
+    <a class="btn btn-gradient" href="#">New list</a>
+    <button type="button" class="btn btn-primary"><%= link_to "New list", new_list_path %></button>
+
+
+</div>
+
+<p>Find me in app/views/lists/index.html.erb</p>
