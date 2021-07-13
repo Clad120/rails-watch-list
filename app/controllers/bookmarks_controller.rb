@@ -1,11 +1,15 @@
 class BookmarksController < ApplicationController
   def new
-    @list = Bookmark.new
+    @bookmark = Bookmark.new
+    @list = List.find(params[:list_id])
+
     @movies = Movie.all
   end
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
+    @list = List.find(params[:list_id])
+    @bookmark.list = @list
     if @bookmark.save
       redirect_to list_path(@list)
     else
