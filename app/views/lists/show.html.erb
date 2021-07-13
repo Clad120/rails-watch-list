@@ -2,4 +2,13 @@
 
     <button type="button" class="btn btn-primary"><%= link_to "Add a movie to the list", new_list_bookmark_path(@list) %></button>
 
-    <h2> <%= @list.movies %></h2>
+  <div class="container">
+    <div class="cards">
+     <% @list.movies.each do |movie| %>
+       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url( <%= movie.poster_url %>)">
+        <%= movie.title %>
+       </div>
+     <% end %>
+    </div>
+</div>
+
