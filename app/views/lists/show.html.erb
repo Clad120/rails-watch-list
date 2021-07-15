@@ -1,12 +1,17 @@
 <h1>List <%= @list.name %></h1>
 
     <button type="button" class="btn btn-primary"><%= link_to "Add a movie to the list", new_list_bookmark_path(@list) %></button>
+    <button type="button" class="btn btn-gradient"><%= link_to "Back to the lists", lists_path %></button>
 
   <div class="container">
     <div class="cards">
-     <% @list.movies.each do |movie| %>
-       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url( <%= movie.poster_url %>)">
-        <%= movie.title %>
+     <% @list.bookmarks.each do |bookmark| %>
+       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url( <%= bookmark.movie.poster_url %>)">
+        <%= bookmark.movie.title %>
+             <button type="button" class="btn btn-primary"><%= link_to "Remove",
+                    bookmark_path(bookmark),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %></button>
        </div>
      <% end %>
     </div>
